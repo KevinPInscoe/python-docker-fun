@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kevin-testing-loop-messages
+  labels:
+    app: kevin-test-loop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kevin-test-loop
+  template:
+    metadata:
+      labels:
+        app: kevin-test-loop
+    spec:
+      containers:
+      - name: kevin-test-loop
+        image: ghcr.io/kevinpinscoe/kevin_test_loop_python
+        ports:
+        - containerPort: 80
