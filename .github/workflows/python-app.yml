@@ -24,4 +24,4 @@ jobs:
      - name: Tag the Docker image
        run: docker tag kevin_test_loop_python:latest kevin_test_loop_python:1.0
      - name: Push the Docker image to the registry
-       run: docker push kevin_test_loop_python:1.0
+       run: docker push ghcr.io/kevin_test_loop_python:1.0
