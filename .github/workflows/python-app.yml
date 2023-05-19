@@ -36,4 +36,5 @@ jobs:
      - name: Push the Docker image to the registry
        run: docker push ghcr.io/${{ github.actor }}/kevin_test_loop_python:1.0
      - name: Make note of succcess
-       run: echo "{name}={value}" >> $GITHUB_OUTPUT
+       run: SUCCESS="yes"
+           echo "SUCCESS=${SUCCESS}" >> $GITHUB_OUTPUT
