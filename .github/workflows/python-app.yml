@@ -18,10 +18,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+     - name: login to GitHub Container Registry
+       uses: docker/login-action@v1
+       with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
      - uses: actions/checkout@v3
      - name: Build the Docker image
        run: docker build . --file Dockerfile --tag kevin_test_loop_python:1.0
      - name: Tag the Docker image
-       run: docker tag kevin_test_loop_python:1.0 ghcr.io/kevinpinscoe/kevin_test_loop_python:1.0
+       run: docker tag kevin_test_loop_python:1.0 ghcr.io/${{ github.actor }}/kevin_test_loop_python:1.0
      - name: Push the Docker image to the registry
-       run: docker push ghcr.io/kevinpinscoe/kevin_test_loop_python:1.0
+       run: docker push ghcr.io/${{ github.actor }}/kevin_test_loop_python:1.0
